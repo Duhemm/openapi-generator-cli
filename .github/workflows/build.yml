@@ -25,6 +25,13 @@ jobs:
         with:
           node-version: ${{matrix.node-version }}
 
+      - name: Setup Develocity for npm
+        uses: gradle/develocity-actions/setup-npm@34dfc49e0c500e7b6f95f5a3ed50c6bd067d274d
+        with:
+          develocity-url: https://dv-helm-standalone-unstable-main.grdev.net
+          develocity-access-key: ${{ secrets.DEVELOCITY_ACCESS_KEY }}
+          develocity-injection-enabled: true
+
       - name: Install
         run: yarn --frozen-lockfile
 
@@ -64,6 +71,13 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: ${{matrix.node-version }}
+
+      - name: Setup Develocity for npm
+        uses: gradle/develocity-actions/setup-npm@34dfc49e0c500e7b6f95f5a3ed50c6bd067d274d
+        with:
+          develocity-url: https://dv-helm-standalone-unstable-main.grdev.net
+          develocity-access-key: ${{ secrets.DEVELOCITY_ACCESS_KEY }}
+          develocity-injection-enabled: true
 
       - uses: actions/download-artifact@v6
         with:
