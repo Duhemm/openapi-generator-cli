@@ -26,11 +26,12 @@ jobs:
           node-version: ${{matrix.node-version }}
 
       - name: Setup Develocity for npm
-        uses: gradle/develocity-actions/setup-npm@34dfc49e0c500e7b6f95f5a3ed50c6bd067d274d
+        uses: Duhemm/develocity-actions/setup-npm@e7b2430932d3ebd7aa5a2cd572a7df3bc860bc3b
         with:
           develocity-url: https://dv-helm-standalone-unstable-main.grdev.net
           develocity-access-key: ${{ secrets.DEVELOCITY_ACCESS_KEY }}
           develocity-injection-enabled: true
+          develocity-npm-agent-url-override: https://develocity-npm-pkgs.grdev.net/gradle-develocity-agent-3.0.0-branch-main-20251113145013.tgz
 
       - name: Install
         run: yarn --frozen-lockfile
